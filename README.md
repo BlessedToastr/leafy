@@ -23,7 +23,7 @@ $ ./leafy.sh <IP/DOMAIN> <List>
 $ wget -q https://raw.githubusercontent.com/Toastrnet/leafey/main/list
 ```
 
-# About Leafy
+# About
 
 Leafy is a script designed to test websites for LFI vulnerabilities. It draws from a list of potential LFI syntaxes and tests those on the domain provided. In the future, Leafy will be fleshed out to a script that does further Web Enumeration.
 
