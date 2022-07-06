@@ -29,6 +29,6 @@ Leafy is a script designed to test websites for LFI vulnerabilities. It draws fr
 
 # Advisory
 
-All the scripts/binaries of the Leafy Suite should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own networks and/or with the network owner's permission.
+This script is designed to be for educational use only. Only use this script on networks and machines you have permission to use on. Any misise of this script will no be the responsibility of the author or other collaborators of this project.
 
 Created by Toastr
