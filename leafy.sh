@@ -1,9 +1,6 @@
 #!/bin/bash
-
-printf "IP to check for LFI\nPlease input address up to page= part\n"
-read -p "IP: " ip
-printf "Full path to list\n"
-read -p "List: " list
+ip=$1
+list=$2
 
 clear
 
