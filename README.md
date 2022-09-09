@@ -16,6 +16,13 @@ wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 python3 leafy.py -i <IP> -p <port> -a <path> -P <parameter> -l <list>
 ```
 
+- IP is the IP address you are targeting
+- Port is the port the webserver is listening on
+- Path is the file path to the vulnerable php script
+- Parameter is the php parameter to user
+-   ex: ?page=, ?dir=, ?file=
+- List is the file of potential payloads
+
 ### A list can be pulled with
 
 ```bash
