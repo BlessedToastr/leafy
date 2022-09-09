@@ -13,7 +13,7 @@ wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 ### To Run the Script
 
 ```bash
-I'll put this back up when finished
+python3 leafy.py -i <IP> -p <port> -a <path> -P <parameter> -l <list>
 ```
 
 ### A list can be pulled with
