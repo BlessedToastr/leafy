@@ -20,7 +20,7 @@ python3 leafy.py -i <IP> -p <port> -a <path> -P <parameter> -l <list>
 - Port is the port the webserver is listening on
 - Path is the file path to the vulnerable php script
 - Parameter is the php parameter to user
-  - ex: ?page=, ?dir=, ?file=
+  - ex: ?page=, ?dir=, ?file=, etc.
 - List is the file of potential payloads
 
 ### A list can be pulled with
