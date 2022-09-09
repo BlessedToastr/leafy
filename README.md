@@ -7,7 +7,7 @@ Leafy is a Web Enumeration Tool that checks websites for possible LFI vulnerabil
 ### Get the Script
 
 ```jsx
-wget -q https://raw.githubusercontent.com/Toastrnet/leafy/main/leafy.py
+wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 ```
 
 ### To Run the Script
@@ -19,7 +19,7 @@ I'll put this back up when finished
 ### A list can be pulled with
 
 ```bash
-wget -q https://raw.githubusercontent.com/Toastrnet/leafy/main/list
+wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/list
 ```
 
 # About
