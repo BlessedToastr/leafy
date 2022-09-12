@@ -13,7 +13,7 @@ wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 ### To Run the Script
 
 ```bash
-python3 leafy.py -i <IP> -p <port> -a <path> -P <parameter> -l <list>
+python3 leafy.py -m <MODE> -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -l <LIST>
 ```
 
 - IP is the IP address you are targeting
