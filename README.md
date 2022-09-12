@@ -7,19 +7,26 @@ Leafy is a Web Enumeration Tool that checks websites for possible LFI vulnerabil
 ### Get the Script
 
 ```jsx
-wget -q https://raw.githubusercontent.com/Toastrnet/leafy/main/leafy.py
+wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 ```
 
 ### To Run the Script
 
 ```bash
-I'll put this back up when finished
+python3 leafy.py -m <MODE> -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -l <LIST>
 ```
+
+- IP is the IP address you are targeting
+- Port is the port the webserver is listening on
+- Path is the file path to the vulnerable php script
+- Parameter is the php parameter to user
+  - ex: ?page=, ?dir=, ?file=, etc.
+- List is the file of potential payloads
 
 ### A list can be pulled with
 
 ```bash
-wget -q https://raw.githubusercontent.com/Toastrnet/leafy/main/list
+wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/list
 ```
 
 # About
