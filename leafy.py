@@ -1,8 +1,8 @@
 from inspect import ArgSpec
 from sqlite3 import adapt
-from urllib import request
 import httplib2
 import argparse
+import urllib.request
 
 # Init parser
 parser = argparse.ArgumentParser()
@@ -19,7 +19,6 @@ args = parser.parse_args()
 
 # Define the website
 website = "http://" + args.ip + ":" + args.port + "/" + args.path + args.param
-http = httplib2.Http() # Init httplib2
 
 # Open list and read all the lines
 file = open(args.list, 'r')
@@ -28,5 +27,9 @@ lines = file.readlines()
 # Read and loop through every line in file
 for line in lines:
     payload = website + line
-    resp = http.request(website)[0]
-    print(resp.status)
+    resp = urllib.request.urlopen(payload)
+    page = resp.read().decode('utf-8')
+    if "root" in page:
+        print(payload)
+    else:
+        continue
