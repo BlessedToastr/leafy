@@ -18,7 +18,7 @@ parser.add_argument("-l", "--list", help="The full path to the list of potential
 args = parser.parse_args()
 
 # Define the website
-website = "http://" + args.ip + ":" + args.port + "/" + args.path + args.param
+website = "http://" + args.ip + ":" + args.port + args.path + args.param
 http = httplib2.Http() # Init httplib2
 
 # Open list and read all the lines
@@ -28,5 +28,5 @@ lines = file.readlines()
 # Read and loop through every line in file
 for line in lines:
     payload = website + line
-    resp = http.request(website)[0]
-    print(resp.status)
+    print(payload)
+    
