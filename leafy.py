@@ -1,9 +1,13 @@
+import argparse
+import urllib.request
 from inspect import ArgSpec
 from sqlite3 import adapt
-import argparse
 from urllib.error import HTTPError
-import urllib.request
 import pyfiglet
+
+# Initial Banner
+init_banner = pyfiglet.figlet_format("Leafy")
+print(init_banner)
 
 # Dir busting function
 def getRespCode(url):
@@ -35,7 +39,7 @@ args = parser.parse_args()
 if args.mode == "lfi":
 
     # Banner
-    banner = pyfiglet.figlet_format("Leafy\nLFI - CHECK")
+    banner = pyfiglet.figlet_format("LFI - CHECK")
     print(banner)
     
     # Test for all required arguments
@@ -97,7 +101,7 @@ if args.mode == "lfi":
 if args.mode == "dir":
     
     # Banner
-    banner = pyfiglet.figlet_format("Leafy\nDIR BUSTER")
+    banner = pyfiglet.figlet_format("DIR BUSTER")
     print(banner)
     
     # Test for required args
