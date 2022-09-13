@@ -14,6 +14,13 @@ wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 
 ```bash
 $ python3 leafy.py -h
+ _                __       
+| |    ___  __ _ / _|_   _ 
+| |   / _ \/ _` | |_| | | |
+| |__|  __/ (_| |  _| |_| |
+|_____\___|\__,_|_|  \__, |
+                     |___/ 
+
 usage: leafy.py [-h] -m MODE [-i IP] [-p PORT] [-a PATH] [-P PARAM] [-l LIST]
 
 options:
