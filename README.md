@@ -41,7 +41,7 @@ $ python3 leafy.py -m lfi -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -l <WORDLIS
 
 ### To run in dir busting mode
 ```bash
-$ python3 leafy.py -m dir -i <IP> -p <PORT> -a <PATH> -l <WORDLIST>
+$ python3 leafy.py -m dir -i <IP> -p <PORT> -a <PATH> -e <EXTENSION> -l <WORDLIST>
 ```
 ---
 ### A list for lfi can be pulled with
@@ -57,8 +57,12 @@ python3 leafy.py -m lfi -i 172.16.0.8 -p 80 -a index.php -P ?page= -l /full/path
 ```
 
 ### Dir Busting
+``bash
+python3 leafy.py -m dir -i 172.16.0.8 -p 80 -a '' -e '' -l /full/path/to/list
+```
+
 ```bash
-python3 leafy.py -m dir -i 172.16.0.8 -p 80 -a '' -l /full/path/to/list
+python3 leafy.py -m dir -i 172.16.0.8 -p 80 -a '/admin' -e '.php' -l /full/path/to/list
 ```
 
 
