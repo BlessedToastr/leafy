@@ -14,7 +14,7 @@ def getRespCode(url):
     try:
         resp = urllib.request.urlopen(url)
         # print(resp.getcode())
-        if resp.getcode() == 200:
+        if resp.getcode() == 200 or resp.getcode() == 204 or resp.getcode() == 301 or resp.getcode() == 302 or resp.getcode() == 307 or resp.getcode() == 401 or resp.getcode() == 403:
             print(url)
     except HTTPError as e:
         return e.code()
@@ -37,10 +37,6 @@ args = parser.parse_args()
 
 # LFI MODE
 if args.mode == "lfi":
-
-    # Banner
-    banner = pyfiglet.figlet_format("LFI - CHECK")
-    print(banner)
     
     # Test for all required arguments
     # Test for IP
@@ -84,14 +80,22 @@ if args.mode == "lfi":
     # Open list and read all the lines
     file = open(args.list, 'r')
     lines = file.readlines()
+    with open(args.list, 'r') as fp:
+        length = len(fp.readlines())
+
+    # Banner
+    banner = pyfiglet.figlet_format("LFI - CHECK")
+    print(banner)
+    print("Website: " + website)
+    print("Wordlist: " + args.list)
+    print("Lines: " + str(length) + "\n")
 
     # Read and loop through every line in file
     for line in lines:
         payload = website + line
         resp = urllib.request.urlopen(payload)
-        # page = resp.read().decode('utf-8')
         if b'root' in resp.read():
-            print(payload)
+            print(payload, end="")
         else:
             continue
 
@@ -99,10 +103,6 @@ if args.mode == "lfi":
 
 # DIR BUST MODE
 if args.mode == "dir":
-    
-    # Banner
-    banner = pyfiglet.figlet_format("DIR BUSTER")
-    print(banner)
     
     # Test for required args
     # Test for IP
@@ -139,6 +139,15 @@ if args.mode == "dir":
     # Open list and read all the lines
     file = open(args.list, 'r')
     lines = file.readlines()
+    with open(args.list, 'r') as fp:
+        length = len(fp.readlines())
+
+    # Banner
+    banner = pyfiglet.figlet_format("DIR BUSTER")
+    print(banner)
+    print("Website: " + website)
+    print("Wordlist: " + args.list)
+    print("Lines: " + str(length) + "\n")
 
     # Directory busting
     for line in lines:
@@ -147,8 +156,6 @@ if args.mode == "dir":
             getRespCode(payload)
         except:
             continue
-
-
 
 # -----------------------------------------------------------------------------------------------------------
 
