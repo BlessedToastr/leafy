@@ -26,16 +26,18 @@ options:
                         The parameter to use
   -l LIST, --list LIST  The full path to the wordlist
 ```
+
 ### To run in LFI mode
 ```bash
 $ python3 leafy.py -m lfi -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -l <WORDLIST>
 ```
+
 ### To run in dir busting mode
 ```bash
 $ python3 leafy.py -m dir -i <IP> -p <PORT> -a <PATH> -l <WORDLIST>
 ```
-
-### A list can be pulled with
+---
+### A list for lfi can be pulled with
 
 ```bash
 wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/list
