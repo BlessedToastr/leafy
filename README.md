@@ -13,15 +13,20 @@ wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/leafy.py
 ### To Run the Script
 
 ```bash
-python3 leafy.py -m <MODE> -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -l <LIST>
+python3 leafy.py -h
+usage: leafy.py [-h] -m MODE [-i IP] [-p PORT] [-a PATH] [-P PARAM] [-l LIST]
+
+options:
+  -h, --help            show this help message and exit
+  -m MODE, --mode MODE  What mode to run leafy on
+  -i IP, --ip IP        The IP address of the website you are targeting
+  -p PORT, --port PORT  The port the website is running on
+  -a PATH, --path PATH  Full path
+  -P PARAM, --parameter PARAM
+                        The parameter to use
+  -l LIST, --list LIST  The full path to the wordlist
 ```
 
-- IP is the IP address you are targeting
-- Port is the port the webserver is listening on
-- Path is the file path to the vulnerable php script
-- Parameter is the php parameter to user
-  - ex: ?page=, ?dir=, ?file=, etc.
-- List is the file of potential payloads
 
 ### A list can be pulled with
 
