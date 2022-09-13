@@ -57,7 +57,7 @@ python3 leafy.py -m lfi -i 172.16.0.8 -p 80 -a index.php -P ?page= -l /full/path
 ```
 
 ### Dir Busting
-``bash
+```bash
 python3 leafy.py -m dir -i 172.16.0.8 -p 80 -a '' -e '' -l /full/path/to/list
 ```
 
