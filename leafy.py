@@ -19,13 +19,43 @@ args = parser.parse_args()
 
 # LFI MODE
 if args.mode == "lfi":
-    print("test")
+
+    # Test for all required arguments
+    # Test for IP
+    try:
+        args.ip
+    except:
+        print('You need to indicate an IP to target')
+        exit
+    
+    # Test for port
+    try:
+        args.port
+    except:
+        print("you need to indicate a port to target")
+        exit
+
+    # Test for path
+    try:
+        args.path
+    except:
+        print("you need to indicate a path to target")
+        exit
+
+    # Test for param
     try:
         args.param
     except:
-        print('-P <PARAMETER> is required to run in lfi mode')
+        print("you need to indicate a parameter to target")
         exit
     
+    # Test for list
+    try:
+        args.list
+    except:
+        print("you need to indicate a list")
+        exit
+
     # Define the website
     website = "http://" + args.ip + ":" + args.port + "/" + args.path + args.param
 
