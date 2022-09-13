@@ -3,7 +3,7 @@ from sqlite3 import adapt
 import argparse
 from urllib.error import HTTPError
 import urllib.request
-import requests
+import pyfiglet
 
 # Dir busting function
 def getRespCode(url):
@@ -34,6 +34,10 @@ args = parser.parse_args()
 # LFI MODE
 if args.mode == "lfi":
 
+    # Banner
+    banner = pyfiglet.figlet_format("Leafy\nLFI - CHECK")
+    print(banner)
+    
     # Test for all required arguments
     # Test for IP
     try:
@@ -91,6 +95,10 @@ if args.mode == "lfi":
 
 # DIR BUST MODE
 if args.mode == "dir":
+    
+    # Banner
+    banner = pyfiglet.figlet_format("Leafy\nDIR BUSTER")
+    print(banner)
     
     # Test for required args
     # Test for IP
