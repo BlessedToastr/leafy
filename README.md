@@ -1,3 +1,4 @@
+![leafy](https://imgur.com/RgElgFN)
 # Leafy - A Web Enumeration Tool - Not Finished
 
 Leafy is a Web Enumeration Tool that checks websites for possible LFI vulnerabilities
