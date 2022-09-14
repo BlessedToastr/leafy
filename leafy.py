@@ -104,10 +104,9 @@ if args.mode == "lfi":
     for line in lines:
         payload = website + line + args.param2
         payload = payload.replace("\n", "")
-        print(payload)
         resp = urllib.request.urlopen(payload)
         if b'root' in resp.read():
-            print(payload, end="")
+            print(payload)
             count += 1
         else:
             continue
