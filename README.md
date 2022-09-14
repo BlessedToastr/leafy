@@ -1,4 +1,7 @@
-# Leafy - A Web Enumeration Tool - Not Finished
+# LEAFY - A Web Enumeration Tool
+
+![leafy](/images/leaf.png?raw=true "Leaf")
+# What is Leafy?
 
 Leafy is a Web Enumeration Tool that checks websites for possible LFI vulnerabilities
 
