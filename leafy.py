@@ -1,4 +1,5 @@
 import argparse
+from ast import arg
 import urllib.request
 from urllib.error import HTTPError
 import pyfiglet
@@ -6,6 +7,8 @@ import pyfiglet
 # Initial Banner
 init_banner = pyfiglet.figlet_format("Leafy")
 print(init_banner)
+
+count = 0
 
 # Dir busting function
 def getRespCode(url):
@@ -27,6 +30,7 @@ parser.add_argument("-p", "--port", help="The port the website is running on", m
 parser.add_argument("-a", "--path", help="Full path", metavar="PATH", dest="path", type=str) # LFI, DIR
 parser.add_argument("-e", "--extension", help="extension to brute force", metavar="TYPE", dest="ext", type=str) # DIR
 parser.add_argument("-P", "--parameter", help="The parameter to use", metavar="PARAM", dest="param", type=str) # LFI
+parser.add_argument("-P2", "--parameter2", help="In case you need a second parameter after lfi line", metavar="PARAM2", dest="param2", type=str)
 parser.add_argument("-l", "--list", help="The full path to the wordlist", metavar="LIST", dest="list", type=str) # LFI, DIR
 
 # Get the args
@@ -66,6 +70,13 @@ if args.mode == "lfi":
         print("you need to indicate a parameter to target")
         exit
     
+    # Test for param
+    try:
+        args.param2
+    except:
+        print("you need to indicate a parameter to target")
+        exit
+    
     # Test for list
     try:
         args.list
@@ -85,16 +96,19 @@ if args.mode == "lfi":
     # Banner
     banner = pyfiglet.figlet_format("LFI - CHECK")
     print(banner)
-    print("Website: " + website)
+    print("Website: " + website + "..." + args.param2)
     print("Wordlist: " + args.list)
     print("Lines: " + str(length) + "\n")
 
     # Read and loop through every line in file
     for line in lines:
-        payload = website + line
+        payload = website + line + args.param2
+        payload = payload.replace("\n", "")
+        print(payload)
         resp = urllib.request.urlopen(payload)
         if b'root' in resp.read():
             print(payload, end="")
+            count += 1
         else:
             continue
 
@@ -167,4 +181,5 @@ if args.mode == "dir":
 # -----------------------------------------------------------------------------------------------------------
 
 # Print when script is done
+print(count + "Potential paths found")
 print("done")
