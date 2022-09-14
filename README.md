@@ -56,7 +56,7 @@ wget -q https://raw.githubusercontent.com/BlessedToastr/leafy/main/list
 # Examples
 ### LFI
 ```bash
-python3 leafy.py -m lfi -i 172.16.0.8 -p 80 -a index.php -P ?page= -l /full/path/to/list
+python3 leafy.py -m lfi -i 172.16.0.8 -p 80 -a index.php -P ?page= -P2 '&ext=' -l /full/path/to/list
 ```
 
 ### Dir Busting
