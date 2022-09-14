@@ -39,7 +39,7 @@ options:
 
 ### To run in LFI mode
 ```bash
-$ python3 leafy.py -m lfi -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -P2 <END PARAMETER>-l <WORDLIST>
+$ python3 leafy.py -m lfi -i <IP> -p <PORT> -a <PATH> -P <PARAMETER> -P2 <END PARAMETER> -l <WORDLIST>
 ```
 
 ### To run in dir busting mode
