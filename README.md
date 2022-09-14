@@ -24,7 +24,7 @@ $ python3 leafy.py -h
 |_____\___|\__,_|_|  \__, |
                      |___/ 
 
-usage: leafy.py [-h] -m MODE [-i IP] [-p PORT] [-a PATH] [-P PARAM] [-l LIST]
+usage: leafy.py [-h] -m MODE [-i IP] [-p PORT] [-a PATH] [-P PARAM] [-P2 PARAM] [-l LIST]
 
 options:
   -h, --help            show this help message and exit
