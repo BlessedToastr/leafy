@@ -180,5 +180,5 @@ if args.mode == "dir":
 # -----------------------------------------------------------------------------------------------------------
 
 # Print when script is done
-print(count + "Potential paths found")
+print("Potential Paths Found: " + str(count))
 print("done")
