@@ -2,11 +2,34 @@ import argparse
 from ast import arg
 import urllib.request
 from urllib.error import HTTPError
-import pyfiglet
+
 
 # Initial Banner
-init_banner = pyfiglet.figlet_format("Leafy")
-print(init_banner)
+leafy_banner = '''
+ _                __       
+| |    ___  __ _ / _|_   _ 
+| |   / _ \/ _` | |_| | | |
+| |__|  __/ (_| |  _| |_| |
+|_____\___|\__,_|_|  \__, |
+                     |___/ 
+'''
+
+lfi_banner = '''
+ _     _____ ___            ____ _   _ _____ ____ _  __
+| |   |  ___|_ _|          / ___| | | | ____/ ___| |/ /
+| |   | |_   | |   _____  | |   | |_| |  _|| |   | ' / 
+| |___|  _|  | |  |_____| | |___|  _  | |__| |___| . \ 
+|_____|_|   |___|          \____|_| |_|_____\____|_|\_\
+'''
+
+dir_banner = '''
+ ____ ___ ____    ____  _   _ ____ _____ _____ ____  
+|  _ \_ _|  _ \  | __ )| | | / ___|_   _| ____|  _ \ 
+| | | | || |_) | |  _ \| | | \___ \ | | |  _| | |_) |
+| |_| | ||  _ <  | |_) | |_| |___) || | | |___|  _ < 
+|____/___|_| \_\ |____/ \___/|____/ |_| |_____|_| \_\
+'''
+print(leafy_banner)
 
 count = 0
 
@@ -94,11 +117,7 @@ if args.mode == "lfi":
         length = len(fp.readlines())
 
     # Banner
-    banner = pyfiglet.figlet_format("LFI - CHECK")
-    print(banner)
-    print("Website: " + website + "..." + args.param2)
-    print("Wordlist: " + args.list)
-    print("Lines: " + str(length) + "\n")
+    print(leafy_banner)
 
     # Read and loop through every line in file
     for line in lines:
@@ -163,11 +182,7 @@ if args.mode == "dir":
         length = len(fp.readlines())
 
     # Banner
-    banner = pyfiglet.figlet_format("DIR BUSTER")
-    print(banner)
-    print("Website: " + website)
-    print("Wordlist: " + args.list)
-    print("Lines: " + str(length) + "\n")
+    print(dir_banner)
 
     # Directory busting
     for line in lines:
