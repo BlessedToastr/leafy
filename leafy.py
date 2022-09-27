@@ -120,7 +120,7 @@ if args.mode == "lfi":
             length = len(fp.readlines())
 
         # Banner
-        print(leafy_banner)
+        print(lfi_banner)
 
         # Read and loop through every line in file
         for line in lines:
